@@ -1,0 +1,15 @@
+{% extends 'resenas/base.html' %}
+
+{% block content %}
+
+    
+    <form method="post">
+        {% csrf_token %}
+
+        <h1>Desea eliminar?</h1>
+
+        <button type='submit'> Eliminar </button>
+
+    </form>
+ 
+{% endblock %}

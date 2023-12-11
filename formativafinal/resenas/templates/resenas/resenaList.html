@@ -1,0 +1,53 @@
+{% extends 'resenas/base.html' %}
+
+{% block content %}
+
+<!--Articulos-->
+<section class="contenedor populares">
+    <h1 class="centrar-texto fw-400">Lista reseñas</h1>
+
+    {% load static %}
+    
+    {% for resena in resenas %}
+        <article class="entradas">
+            <div class="caja">
+                <div class="box">
+                    
+                    <img src="{{ resena.photo.url }}" alt="Imagen populares">
+                </div>
+            </div>
+            
+            
+
+            <div class="entrada-texto">
+                <h3>{{ resena.nombre }}</h3>
+                <p>{{ resena.description }}</p>
+
+                <ul class="iconos-caracteristicas">
+
+                    {% with ''|center:resena.valoracion as range %}
+                        {% for a in range %}
+                        <li> 
+                            <img src='{% static "resenas/img/blackstar.svg" %}' alt="Imagen estrella">
+                        </li>
+                        {% endfor %}
+                    {% endwith %}
+                </ul>
+
+                <div class="div">
+                    <a class="btn btn-warning" href="{% url 'update' pk=resena.id %}">Editar</a>
+                    <a class="btn btn-danger me-2" href="{% url 'delete' pk=resena.id %}">Eliminar</a>
+                </div>
+
+            </div>
+
+     
+
+        </article>
+
+    {% endfor %}
+</section>
+
+
+
+{% endblock %}
